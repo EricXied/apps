@@ -1,0 +1,29 @@
+{% load static %}
+<link href="{% static 'style.css' %}?{% now 'U' %}" rel="stylesheet" />
+<section class="d-flex align-items-center" style="width: 40%">
+  <div class="container column-direction">
+    <h1>Login Now</h1>
+    <style>
+      h3 {
+        color: red;
+      }
+    </style>
+    {% for message in messages %}
+      <h3>{{ message }}</h3>
+    {% endfor %}
+    <form action="login" method="POST">
+      {% csrf_token %}
+      <p>username:</p>
+      <input type="text" name="username" />
+      <p>password:</p>
+      <input type="text" name="password" /><br /><br />
+      <dir class="submit-buttom">
+        <input type="submit" value="Submit" />
+      </dir>
+
+      <p>
+        <a href="register">Sign up</a>
+      </p>
+    </form>
+  </div>
+</section>
